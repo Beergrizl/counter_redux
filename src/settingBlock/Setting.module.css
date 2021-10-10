@@ -1,0 +1,62 @@
+.counterBlock {
+    border: 4px solid;
+    border-radius: 10px;
+    width: 400px;
+    padding: 10px;
+}
+
+.inputBlock {
+
+    border: 4px solid;
+    border-radius: 10px;
+    height: 260px;
+    display: flex;
+    align-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.buttonBlock {
+    border: 4px solid;
+    border-radius: 10px;
+    margin-top: 10px;
+    height: 134px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button {
+    height: 50px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: darkcyan;
+    font-weight: bold;
+    font-size: 40px;
+}
+.input{
+    font-size: 30px;
+    font-weight: bold;
+}
+.inputArea{
+    height: 40px;
+    width: 85px;
+    font-size:40px ;
+    font-weight: bold;
+
+}
+.inputRedMax{
+    height: 40px;
+    width: 85px;
+    font-size:40px ;
+    font-weight: bold;
+    background-color: rgba(230,21,61,0.56);
+}
+.inputRedStart{
+    height: 40px;
+    width: 85px;
+    font-size:40px ;
+    font-weight: bold;
+    background-color: rgba(230,21,61,0.56);
+}
