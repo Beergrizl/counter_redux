@@ -72,8 +72,6 @@ export const setStartValueFromLocalStorageTC = () => (dispatch: Dispatch) => {
     if (valueAsString) {
         let newValue = JSON.parse(valueAsString)
         dispatch(setValueAC(newValue))
-
-
     }
 }
 export const setStartValueTC = (startValue: SetValueType) => (dispatch: Dispatch) => {

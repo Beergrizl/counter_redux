@@ -1,7 +1,7 @@
 
 import {SetValueType} from "../App";
 import {Dispatch} from "redux";
-import {setStartValueAC} from "./valueRuducer";
+
 
 const initialState = {
     resetValue: 0
