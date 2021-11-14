@@ -3,9 +3,9 @@ import s from './Setting.module.css';
 import {SetValueType} from "../App";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../store/store";
-import {maxValAC, maxValFromLocalStorageTC} from "../store/maxValReducer";
-import {startValAC, startValFromLocalStorageTC} from "../store/startValReducer";
-import {setMaxTC} from "../store/maxValueReducer";
+import {maxValAC, maxValFromLocalStorageTC} from "../store/valueRuducer";
+import {startValAC, startValFromLocalStorageTC} from "../store/valueRuducer";
+
 
 type SettingComponentPropsType = {
     setWarningMessage: () => void
@@ -15,34 +15,20 @@ type SettingComponentPropsType = {
     setMax: (maxValue: SetValueType) => void
 }
 export const SettingComponent = (props: SettingComponentPropsType) => {
-    //const [maxValue, setMaxValue] = useState<SetValueType>('');
-    //const [startValue, setStartValue] = useState<SetValueType>('');
-    const startVal = useSelector<AppStateType, SetValueType>(state => state.startVal.startVal)
-    const maxVal = useSelector<AppStateType, SetValueType>(state => state.maxVal.maxVal)
+    const startVal = useSelector<AppStateType, SetValueType>(state => state.value.startVal)
+    const maxVal = useSelector<AppStateType, SetValueType>(state => state.value.maxVal)
     const dispatch = useDispatch()
-    //console.log(`${startVal} ${maxVal}`)
-
 
     useEffect(() => {
         dispatch(startValFromLocalStorageTC())
-
         dispatch(maxValFromLocalStorageTC())
-//props.setMax(maxVal)
-
-
-
-         }, [])
-
-
+    }, [])
 
     let maxValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(maxValAC(Number(e.currentTarget.value)));
         let max = e.currentTarget.value;
         (max <= startVal || Number(max) < 0) ? props.setWarningMessage()
             : props.setMessage();
-
-
-
     }
     let startValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let start = Number(e.currentTarget.value);

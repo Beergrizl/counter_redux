@@ -1,19 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {CounterComponent} from "./counterBlock/CounterComponent";
 import {SettingComponent} from "./settingBlock/SettingComponent";
 import s from "./counterBlock/Counter.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "./store/store";
 import {
-
     incValueTC,
     resetButtonValueTC, setMessageAC, setStartValueFromLocalStorageTC,
-    //setMessageTC,
     setStartValueTC, setWarningMessageAC,
-    //setWarningMessageTC
 } from "./store/valueRuducer";
-import {setFirstStartValueFromLocalStorageTC, setFirstStartValueTC} from "./store/resetValueReducer";
-import { setMaxTC} from "./store/maxValueReducer";
+import {setFirstStartValueFromLocalStorageTC, setFirstStartValueTC} from "./store/valueRuducer";
+import {setMaxTC} from "./store/valueRuducer";
 
 export type SetValueType = number | string
 
@@ -23,18 +20,18 @@ function App() {
         state => state.value.value)
 
     const resetValue = useSelector<AppStateType, SetValueType>(
-        state => state.resetValue.resetValue)
+        state => state.value.resetValue)
 
     const maxValue = useSelector<AppStateType, SetValueType>(
-        state => state.maxValue.maxValue)
+        state => state.value.maxValue)
     const dispatch = useDispatch()
     //let [value, setValue] = useState<SetValueType>('');
     //let [resetValue, setFirstStartValue] = useState<SetValueType>(0);
     // let [maxValue, setMaxValue] = useState<SetValueType>(0);
 
-     useEffect(() => {
+    useEffect(() => {
         dispatch(setStartValueFromLocalStorageTC())
-     }, [])
+    }, [])
 
 
     function incValue() {
@@ -43,7 +40,6 @@ function App() {
 
     function setMax(maxValue: SetValueType) {
         dispatch(setMaxTC(maxValue))
-
     }
 
     function setStartValue(startValue: SetValueType) {
@@ -56,10 +52,10 @@ function App() {
         //localStorage.setItem('resetValue', JSON.stringify(startValue))
     }
 
-     useEffect(() => {
-         dispatch(setFirstStartValueFromLocalStorageTC())
+    useEffect(() => {
+        dispatch(setFirstStartValueFromLocalStorageTC())
 
-     }, [])
+    }, [])
 
     function resetButtonValue() {
         dispatch(resetButtonValueTC(resetValue))
